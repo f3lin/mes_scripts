@@ -90,3 +90,25 @@ chmod u+w /home/vagrant/backups
 ```
 
 Aucune sortie ne sera affichée après l'exécution de cette commande.
+
+## Copie de Fichiers depuis une Machine Virtuelle Vagrant
+
+Pour copier un fichier depuis une machine virtuelle Vagrant (VM) vers la machine hôte, vous avez plusieurs options :
+
+- Utiliser vagrant scp : Vagrant fournit une commande intégrée appelée scp pour copier de manière sécurisée des fichiers entre la machine hôte et la machine invité. Voici la syntaxe :
+
+```bash
+vagrant scp <nom-vm>:/chemin/vers/le/fichier/source /chemin/vers/le/fichier/destination
+```
+
+Remplacez <nom-vm> par le nom de votre VM et spécifiez les chemins vers les fichiers source et destination en conséquence.
+
+Utiliser les Dossiers Partagés : Si vous avez configuré des dossiers partagés entre votre machine hôte et la machine invitée dans votre Vagrantfile, vous pouvez simplement copier le fichier vers le dossier partagé depuis la VM, et il sera automatiquement disponible sur la machine hôte.
+
+Utiliser SSH : Vous pouvez utiliser des outils SSH standard tels que scp ou rsync pour copier des fichiers entre la VM et la machine hôte. Voici un exemple utilisant scp :
+
+```bash
+scp vagrant@<adresse-ip-vm>:/chemin/vers/le/fichier/source /chemin/vers/le/fichier/destination
+```
+
+remplacez <adresse-ip-vm> par l'adresse IP de votre VM et spécifiez les chemins vers les fichiers source et destination en conséquence.
